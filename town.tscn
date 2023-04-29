@@ -21,7 +21,6 @@ ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_y_scale = 0
 glow_enabled = true
-fog_enabled = true
 fog_light_color = Color(0.6, 0.827451, 0.964706, 1)
 fog_density = 0.042
 fog_sky_affect = 0.0
@@ -48,7 +47,8 @@ physics_material_override = SubResource("PhysicsMaterial_juy1x")
 shape = SubResource("WorldBoundaryShape3D_n6x4l")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.525071, -0.342979, 0.778888, -7.45058e-09, 0.915199, 0.403002, -0.851059, -0.211605, 0.480544, 1.23812, 1.21327, 0.715583)
+transform = Transform3D(-4.37114e-08, -0.285053, 0.958512, 0, 0.958512, 0.285053, -1, 1.246e-08, -4.18979e-08, 1.22279, 0.913895, -5.34499e-08)
+size = 1.925
 
 [node name="Crane" parent="." instance=ExtResource("1_04m2r")]
 
