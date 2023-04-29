@@ -47,7 +47,7 @@ physics_material_override = SubResource("PhysicsMaterial_juy1x")
 shape = SubResource("WorldBoundaryShape3D_n6x4l")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, -0.285053, 0.958512, 0, 0.958512, 0.285053, -1, 1.246e-08, -4.18979e-08, 1.22279, 0.913895, -5.34499e-08)
+transform = Transform3D(-4.37114e-08, -0.285053, 0.958512, 0, 0.958512, 0.285053, -1, 1.246e-08, -4.18979e-08, 5.91075, 3.93119, -2.58367e-07)
 size = 1.925
 
 [node name="Crane" parent="." instance=ExtResource("1_04m2r")]

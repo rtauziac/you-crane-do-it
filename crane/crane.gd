@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var turn_speed = 1.0
+@export var turn_speed = 0.4
 @export var move_speed = 0.4
 
 

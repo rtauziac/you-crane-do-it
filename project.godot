@@ -60,7 +60,7 @@ action_less={
 
 [physics]
 
-3d/default_gravity=2.0
+3d/default_gravity=9.0
 
 [rendering]
 

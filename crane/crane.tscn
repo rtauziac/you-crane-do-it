@@ -1,17 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://dpsblkwe0hj1i"]
+[gd_scene load_steps=10 format=3 uid="uid://dpsblkwe0hj1i"]
 
 [ext_resource type="PackedScene" uid="uid://b365la352jhy8" path="res://crane/crane.glb" id="1_c5yg1"]
 [ext_resource type="Script" path="res://crane/crane.gd" id="1_gw841"]
-[ext_resource type="ArrayMesh" uid="uid://4cimybbh47w6" path="res://crane/crane_hook.res" id="3_ik71c"]
+[ext_resource type="ArrayMesh" uid="uid://vu6plwfe5kwn" path="res://crane/crane_hook.res" id="3_ik71c"]
 [ext_resource type="Script" path="res://crane/HookScript.gd" id="3_t8onb"]
 [ext_resource type="Script" path="res://crane/Rope.gd" id="4_8inof"]
+[ext_resource type="ArrayMesh" uid="uid://cyv3c8s5vdqn3" path="res://crane/crane_foot.res" id="5_1v288"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_jvg1g"]
-top_radius = 0.01
-bottom_radius = 0.01
-height = 0.1
-radial_segments = 8
-rings = 1
+[sub_resource type="BoxMesh" id="BoxMesh_gqi8d"]
+size = Vector3(0.2, 0.07, 0.2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_aowgr"]
 top_radius = 0.004
@@ -22,8 +19,9 @@ rings = 2
 cap_top = false
 cap_bottom = false
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mmafg"]
-points = PackedVector3Array(-0.0162659, -0.016266, -0.0162659, -0.0162659, -0.016266, 0.0162628, -0.0162659, 0.0162659, -0.0162659, 0.0162652, -0.016266, -0.0162659, -0.0112126, -0.0601003, -0.00542933, -0.0152612, -0.0445296, -0.003455, 0.0162652, -0.016266, 0.0162628, -0.0162659, 0.0162659, 0.0162628, -0.0152612, -0.0445296, 0.00345198, -0.0112126, -0.0601003, 0.00542631, 0.0162652, 0.0162659, -0.0162659, 0.0174947, -0.038385, -0.00542933, 0.0139054, -0.059278, -0.00542933, 0.0162652, 0.0162659, 0.0162628, 0.0139054, -0.059278, 0.00542631, 0.0174947, -0.038385, 0.00542631)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q73x0"]
+margin = 0.05
+points = PackedVector3Array(0.0618857, -0.127541, 0.0208236, -0.0571524, -0.0578083, -0.0571524, -0.0571524, -0.0578083, 0.0577809, 0.0551, 0.0508172, -0.0543805, -0.0407112, -0.205527, -0.0201951, -0.0543757, 0.0510251, 0.0551, 0.0551, 0.0508172, 0.055009, 0.0577725, -0.0578083, -0.0571524, -0.0550267, 0.0524617, -0.0551, 0.0495578, -0.201413, 0.0208236, 0.0577725, -0.0578083, 0.0577809, -0.0407112, -0.205527, 0.0208236, 0.0454274, -0.190277, -0.0184, -0.0530392, -0.164464, 0.0167285, 0.0618857, -0.127541, -0.0201951, -0.0530392, -0.164464, -0.0160999, 0.0249368, -0.205527, 0.0208236, -0.0448244, -0.19321, -0.0201951, 0.0491806, -0.179039, -0.0184, -0.0448244, -0.19321, 0.0208236, -0.0489376, -0.180894, 0.0167285)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_gw841")
@@ -31,13 +29,12 @@ script = ExtResource("1_gw841")
 [node name="crane" parent="." instance=ExtResource("1_c5yg1")]
 
 [node name="HookScript" type="Node3D" parent="crane"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.953286, -0.682)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.06006, -4.81802)
 script = ExtResource("3_t8onb")
 hook_node_path = NodePath("../../Hook")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="crane/HookScript"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0515332, 0)
-mesh = SubResource("CylinderMesh_jvg1g")
+mesh = SubResource("BoxMesh_gqi8d")
 
 [node name="Rope" type="Node3D" parent="crane/HookScript"]
 script = ExtResource("4_8inof")
@@ -48,7 +45,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = SubResource("CylinderMesh_aowgr")
 
 [node name="Hook" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588275, -0.682269)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.22225, -4.85673)
 mass = 0.3
 max_contacts_reported = 4
 contact_monitor = true
@@ -60,9 +57,13 @@ angular_damp = 0.9
 mesh = ExtResource("3_ik71c")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hook"]
-shape = SubResource("ConvexPolygonShape3D_mmafg")
+shape = SubResource("ConvexPolygonShape3D_q73x0")
 
 [node name="Root" type="Node3D" parent="Hook"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0150347, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0527263, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("5_1v288")
+skeleton = NodePath("../crane")
 
 [editable path="crane"]

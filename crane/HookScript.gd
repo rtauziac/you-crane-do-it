@@ -7,11 +7,11 @@ extends Node3D
 @export var rope_speed = 0.26
 @onready var hook: RigidBody3D = self.get_node(hook_node_path)
 
-var line_length = 0.5
+var line_length = 2
 
 
 func _ready():
-	rope_range_max = global_position.y
+	rope_range_max = global_position.y + 0.01
 
 
 func _process(delta):
@@ -29,7 +29,7 @@ func _hold_hook_length(delta: float):
 	var actual_length: float = predictive_line_vector.length()
 	var is_too_long = actual_length > line_length
 	var too_far_force = -line_vector * (actual_length - line_length) if is_too_long else Vector3.ZERO
-	hook.apply_impulse(too_far_force, hook.global_transform.basis.y * 0.04)
+	hook.apply_impulse(too_far_force, hook.global_transform.basis.y * 0.1)
 
 
 func _hook_smooth_position():
