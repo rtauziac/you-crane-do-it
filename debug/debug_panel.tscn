@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjy1xmpltbm8i"]
+
+[ext_resource type="Script" path="res://debug/debug_panel.gd" id="1_nco1j"]
+
+[node name="DebugPanel" type="CanvasLayer"]
+script = ExtResource("1_nco1j")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="GeneralPurposeLabel" type="Label" parent="Control"]
+offset_right = 570.0
+offset_bottom = 330.0
+text = "Test"

@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpsblkwe0hj1i"]
+
+[ext_resource type="PackedScene" uid="uid://b365la352jhy8" path="res://crane/crane.glb" id="1_c5yg1"]
+[ext_resource type="Script" path="res://crane/crane.gd" id="1_gw841"]
+[ext_resource type="ArrayMesh" uid="uid://4cimybbh47w6" path="res://crane/crane_hook.res" id="3_ik71c"]
+[ext_resource type="Script" path="res://crane/HookScript.gd" id="3_t8onb"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jvg1g"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 0.1
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mmafg"]
+points = PackedVector3Array(-0.0162659, -0.016266, -0.0162659, -0.0162659, -0.016266, 0.0162628, -0.0162659, 0.0162659, -0.0162659, 0.0162652, -0.016266, -0.0162659, -0.0112126, -0.0601003, -0.00542933, -0.0152612, -0.0445296, -0.003455, 0.0162652, -0.016266, 0.0162628, -0.0162659, 0.0162659, 0.0162628, -0.0152612, -0.0445296, 0.00345198, -0.0112126, -0.0601003, 0.00542631, 0.0162652, 0.0162659, -0.0162659, 0.0174947, -0.038385, -0.00542933, 0.0139054, -0.059278, -0.00542933, 0.0162652, 0.0162659, 0.0162628, 0.0139054, -0.059278, 0.00542631, 0.0174947, -0.038385, 0.00542631)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_gw841")
+
+[node name="crane" parent="." instance=ExtResource("1_c5yg1")]
+
+[node name="HookScript" type="Node3D" parent="crane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.984, -0.682)
+script = ExtResource("3_t8onb")
+hook_node_path = NodePath("../../Hook")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="crane/HookScript"]
+mesh = SubResource("CylinderMesh_jvg1g")
+
+[node name="Hook" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.588275, -0.682269)
+mass = 0.3
+max_contacts_reported = 4
+contact_monitor = true
+can_sleep = false
+linear_damp = 0.5
+angular_damp = 0.9
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Hook"]
+mesh = ExtResource("3_ik71c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hook"]
+shape = SubResource("ConvexPolygonShape3D_mmafg")
+
+[editable path="crane"]
