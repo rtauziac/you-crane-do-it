@@ -1,7 +1,7 @@
 extends Node3D
 
 @export var turn_speed = 0.4
-@export var move_speed = 0.4
+@export var move_speed = 0.8
 
 
 func _physics_process(delta):

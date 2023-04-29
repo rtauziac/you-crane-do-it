@@ -2,17 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmuq73rfhub4c"
-path.s3tc="res://.godot/imported/palette.png-bf959bb6b2826abc2f3e4c53c657577f.s3tc.ctex"
+uid="uid://b6a2l6heyp1eu"
+path.s3tc="res://.godot/imported/bank_palette.png-2a86cb5c3cd7d47507fc1cce906943a9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={}
 
 [deps]
 
-source_file="res://graphics/palette.png"
-dest_files=["res://.godot/imported/palette.png-bf959bb6b2826abc2f3e4c53c657577f.s3tc.ctex"]
+source_file="res://city/bank_palette.png"
+dest_files=["res://.godot/imported/bank_palette.png-2a86cb5c3cd7d47507fc1cce906943a9.s3tc.ctex"]
 
 [params]
 

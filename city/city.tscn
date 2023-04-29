@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxkjpjo28k0m1"]
+
+[ext_resource type="PackedScene" uid="uid://13mik8bsctki" path="res://city/city.glb" id="1_alkpq"]
+[ext_resource type="PackedScene" uid="uid://bopo8etx620nk" path="res://city/bank.glb" id="2_sh65d"]
+[ext_resource type="PhysicsMaterial" uid="uid://kw8uvck30b8g" path="res://city/object_phys_material.tres" id="3_nen7a"]
+[ext_resource type="Material" uid="uid://8qxqo6fi6isa" path="res://palette_material.tres" id="3_u8qng"]
+
+[node name="City" type="Node3D"]
+
+[node name="city" parent="." instance=ExtResource("1_alkpq")]
+
+[node name="bank" parent="." groups=["grab"] instance=ExtResource("2_sh65d")]
+transform = Transform3D(1, 0, 0, 0, 0.81191, 0.583782, 0, -0.583782, 0.81191, -0.445951, 1.99992, -3.28915)
+
+[node name="Bank" parent="bank" index="0"]
+physics_material_override = ExtResource("3_nen7a")
+
+[node name="Bank" parent="bank/Bank" index="0"]
+surface_material_override/0 = ExtResource("3_u8qng")
+
+[editable path="bank"]

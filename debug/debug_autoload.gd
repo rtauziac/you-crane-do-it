@@ -4,5 +4,5 @@ var instance: DebugPanel
 
 func _ready():
 	instance = preload("res://debug/debug_panel.tscn").instantiate()
-	get_tree().root.add_child(instance)
+	get_tree().root.add_child.call_deferred(instance)
 

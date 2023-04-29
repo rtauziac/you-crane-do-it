@@ -29,6 +29,12 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
+"materials": {
+"craneMat": {
+"use_external/enabled": true,
+"use_external/path": "res://palette_material.tres"
+}
+},
 "meshes": {
 "crane_Cube001": {
 "generate/lightmap_uv": 0,
