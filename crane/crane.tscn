@@ -31,9 +31,9 @@ script = ExtResource("1_gw841")
 transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, 0, 0, 0)
 
 [node name="CameraAnchor" type="Node3D" parent="crane/Arm" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.03569, -0.881843)
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0.0534374, 2.71003, -0.578784)
 
-[node name="Camera3D" type="Camera3D" parent="crane/Arm/CameraAnchor"]
+[node name="CabinCamera" type="Camera3D" parent="crane/Arm/CameraAnchor"]
 current = true
 fov = 85.0
 script = ExtResource("3_ibhhg")

@@ -1,5 +1,8 @@
 extends Node3D
 
+signal change_camera_target_to_node3D(node: Node3D)
+
+
 @export var mission_list: Array[Mission]
 var _current_mission_index = -1
 var _current_mission_start_dialog_index = 0
@@ -26,7 +29,10 @@ func start_next_mission():
 	# display mission text
 	_current_mission_start_dialog_index = 0
 	_mission_done = false
-	$MissionOverlay.display_mission_text(mission_list[_current_mission_index].mission_text[_current_mission_start_dialog_index])
+	var dialog_line = mission_list[_current_mission_index].mission_text[_current_mission_start_dialog_index]
+	$MissionOverlay.display_mission_text(dialog_line)
+	var target = null if dialog_line.camera_target == null else $City.find_child(dialog_line.camera_target)
+	emit_signal("change_camera_target_to_node3D", target)
 
 
 func delay_then_start_mission(delay: float):
@@ -39,23 +45,35 @@ func show_end_mission():
 	
 func _input(event):
 	if event.is_action_pressed("grab"):
+		if _current_mission_index > mission_list.size() - 1:
+			return
 		var mission = mission_list[_current_mission_index]
 		if not _mission_done:
 			if _current_mission_start_dialog_index < mission.mission_text.size() - 1:
 				_current_mission_start_dialog_index += 1
-				$MissionOverlay.display_mission_text(mission.mission_text[_current_mission_start_dialog_index])
+				var dialog_line: MissionDialog = mission.mission_text[_current_mission_start_dialog_index]
+				$MissionOverlay.display_mission_text(dialog_line)
+				var target = null if dialog_line.camera_target == null else $City.find_child(dialog_line.camera_target)
+				emit_signal("change_camera_target_to_node3D", target)
 				get_tree().root.get_viewport().set_input_as_handled()
 			elif $MissionOverlay.is_dialog_visible():
 				# hide dialog
 				$MissionOverlay.hide_dialog()
+				emit_signal("change_camera_target_to_node3D", null)
 				activate_objects_for_mission(mission)
 		else:
 			if _current_mission_end_dialog_index < mission.end_text.size() - 1:
 				_current_mission_end_dialog_index += 1
-				$MissionOverlay.display_mission_text(mission.end_text[_current_mission_end_dialog_index])
+				var dialog_line = mission.end_text[_current_mission_end_dialog_index]
+				$MissionOverlay.display_mission_text(dialog_line)
+				if dialog_line.camera_target != null:
+					var target = $City.find_child(dialog_line.camera_target)
+					if target != null:
+						emit_signal("change_camera_target_to_node3D", target)
 				get_tree().root.get_viewport().set_input_as_handled()
 			elif $MissionOverlay.is_dialog_visible():
 				$MissionOverlay.hide_dialog()
+				emit_signal("change_camera_target_to_node3D", null)
 				delay_then_start_mission(2.0)
 
 

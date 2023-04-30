@@ -68,7 +68,7 @@ func _input_rope(delta: float):
 			(_current_closest.get_child(0) as MeshInstance3D).set_surface_override_material(0, _prev_mat)
 		if _closest != null:
 			var _mat = (_closest.get_child(0) as MeshInstance3D).get_surface_override_material(0)
-			_mat.next_pass.set("albedo_color", Color(Color.BLACK, 0.2))
+			_mat.next_pass.set("albedo_color", Color(Color.BLACK, 0.35))
 			(_closest.get_child(0) as MeshInstance3D).set_surface_override_material(0, _mat)
 	_current_closest = _closest
 		
@@ -77,7 +77,7 @@ func _input_rope(delta: float):
 func _handle_attached_object(delta: float):
 	if _attached_object != null:
 		var line_vector = _attached_object.global_position + _attached_object.linear_velocity * delta - hook.global_position
-		_attached_object.apply_impulse(-line_vector * _attached_object.mass * delta * 10, _attached_object.get_node("_pin_point").global_position - _attached_object.global_position)
+		_attached_object.apply_impulse(-line_vector * _attached_object.mass * delta * 100 * line_vector.length(), _attached_object.get_node("_pin_point").global_position - _attached_object.global_position)
 		hook.apply_central_force(_attached_object.global_position - hook.global_position * _attached_object.mass)
 
 
