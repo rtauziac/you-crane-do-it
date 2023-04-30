@@ -10,7 +10,7 @@ extends Node3D
 
 var _line_length = 2
 var _attached_object: RigidBody3D = null
-var _previous_closest: RigidBody3D = null
+var _current_closest: RigidBody3D = null
 
 
 func _ready():
@@ -47,11 +47,13 @@ func _hook_smooth_position():
 func _input_rope(delta: float):
 	var rope_rate = Input.get_axis("action_less", "action_greater")
 	_line_length =  clamp(_line_length + rope_rate * rope_speed * delta, rope_range_min, rope_range_max)
+	
+	# highlight closest object
 	var grab_objects = get_tree().get_nodes_in_group("grab")
 	var _closest = null
 	var _closest_dist = 999.0
 	for _grab in grab_objects:
-		var _grab_rigid = _grab.get_child(0) as RigidBody3D
+		var _grab_rigid = _grab as RigidBody3D
 		if _grab_rigid == null:
 			push_warning("object is not a RigidBody3D")
 			break
@@ -59,21 +61,32 @@ func _input_rope(delta: float):
 		if _dist < min_distance and _dist < _closest_dist:
 			_closest_dist = _dist
 			_closest = _grab_rigid
-	if _previous_closest != _closest:
-		if _previous_closest != null:
-			var _prev_mat = (_previous_closest.get_child(0) as MeshInstance3D).get_surface_override_material(0)
+	if _current_closest != _closest:
+		if _current_closest != null:
+			var _prev_mat = (_current_closest.get_child(0) as MeshInstance3D).get_surface_override_material(0)
 			_prev_mat.next_pass.set("albedo_color", Color(Color.BLACK, 0.0))
-			(_previous_closest.get_child(0) as MeshInstance3D).set_surface_override_material(0, _prev_mat)
+			(_current_closest.get_child(0) as MeshInstance3D).set_surface_override_material(0, _prev_mat)
 		if _closest != null:
 			var _mat = (_closest.get_child(0) as MeshInstance3D).get_surface_override_material(0)
 			_mat.next_pass.set("albedo_color", Color(Color.BLACK, 0.2))
 			(_closest.get_child(0) as MeshInstance3D).set_surface_override_material(0, _mat)
-	_previous_closest = _closest
-	if Input.is_action_just_pressed("grab"):
+	_current_closest = _closest
+		
+
+
+func _handle_attached_object(delta: float):
+	if _attached_object != null:
+		var line_vector = _attached_object.global_position + _attached_object.linear_velocity * delta - hook.global_position
+		_attached_object.apply_impulse(-line_vector * _attached_object.mass * delta * 10, _attached_object.get_node("_pin_point").global_position - _attached_object.global_position)
+		hook.apply_central_force(_attached_object.global_position - hook.global_position * _attached_object.mass)
+
+
+func _unhandled_input(event):
+	if event.is_action_pressed("grab"):
 		if _attached_object == null:
-			if _closest == null:
+			if _current_closest == null:
 				return
-			_attached_object = _closest
+			_attached_object = _current_closest
 			var _pin_point = Node3D.new()
 			_pin_point.name = "_pin_point"
 			_attached_object.add_child(_pin_point)
@@ -85,10 +98,4 @@ func _input_rope(delta: float):
 			_attached_object = null
 			hook.collision_layer = 1
 			hook.collision_mask = 1
-
-
-func _handle_attached_object(delta: float):
-	if _attached_object != null:
-		var line_vector = _attached_object.global_position + _attached_object.linear_velocity * delta - hook.global_position
-		_attached_object.apply_impulse(-line_vector * _attached_object.mass * delta * 10, _attached_object.get_node("_pin_point").global_position - _attached_object.global_position)
-		hook.apply_central_force(_attached_object.global_position - hook.global_position * _attached_object.mass)
+		get_tree().root.get_viewport().set_input_as_handled()

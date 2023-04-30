@@ -4,7 +4,6 @@ extends Node3D
 @onready var hook: Node3D = self.get_node(hook_node_path)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	look_at(hook.global_position)
+	look_at(hook.global_position, transform.basis.y)
 	scale = Vector3(1, 1, global_position.distance_to(hook.global_position))

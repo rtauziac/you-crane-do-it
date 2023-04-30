@@ -12,10 +12,10 @@
 size = Vector3(0.2, 0.07, 0.2)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_aowgr"]
-top_radius = 0.004
-bottom_radius = 0.004
+top_radius = 0.02
+bottom_radius = 0.02
 height = 1.0
-radial_segments = 4
+radial_segments = 6
 rings = 2
 cap_top = false
 cap_bottom = false

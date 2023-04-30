@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bopo8etx620nk"
-path="res://.godot/imported/bank.glb-a270e231b77f24d243861ff4f1f1c1c1.scn"
+uid="uid://cedouko2aqu0o"
+path="res://.godot/imported/persons.glb-164573e4f6b84e3c42c8f9eb788ba409.scn"
 
 [deps]
 
-source_file="res://city/bank.glb"
-dest_files=["res://.godot/imported/bank.glb-a270e231b77f24d243861ff4f1f1c1c1.scn"]
+source_file="res://persons/persons.glb"
+dest_files=["res://.godot/imported/persons.glb-164573e4f6b84e3c42c8f9eb788ba409.scn"]
 
 [params]
 
@@ -35,11 +35,16 @@ _subresources={
 "use_external/path": "res://palette_material.tres"
 }
 },
-"nodes": {
-"PATH:Bank": {
-"generate/physics": true,
-"physics/body_type": 1,
-"physics/shape_type": 1
+"meshes": {
+"persons_Cube004": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": false,
+"save_to_file/path": "res://persons/person_building_worker.res"
 }
 }
 }

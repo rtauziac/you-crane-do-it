@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxjyenry8pi2n"]
+
+[ext_resource type="Script" path="res://town/mission_overlay.gd" id="1_nyhnc"]
+[ext_resource type="Texture2D" uid="uid://nd4xpl5kcp04" path="res://icon.svg" id="1_vakl5"]
+
+[node name="MissionOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nyhnc")
+
+[node name="DialogPrompt" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = -236.0
+offset_right = -11.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ColorRect" type="ColorRect" parent="DialogPrompt"]
+layout_mode = 2
+color = Color(0.156863, 0.156863, 0.156863, 0.498039)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogPrompt"]
+custom_minimum_size = Vector2(0, 220)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="DialogPrompt/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="TextureRect" type="TextureRect" parent="DialogPrompt/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+texture = ExtResource("1_vakl5")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogPrompt/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="DialogPrompt/HBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "This is some [i]placeholder text[/i]."

@@ -11,13 +11,19 @@ config_version=5
 [application]
 
 config/name="Ldjam 53"
-run/main_scene="res://town.tscn"
+run/main_scene="res://town/town.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 DebugAutoload="*res://debug/debug_autoload.gd"
+
+[display]
+
+window/size/viewport_width=499
+window/size/viewport_height=375
+window/size/mode=2
 
 [input]
 
@@ -76,7 +82,7 @@ grab={
 
 [rendering]
 
-environment/defaults/default_clear_color=Color(0.866667, 0.615686, 0.713726, 1)
+environment/defaults/default_clear_color=Color(0.27451, 0.431373, 0.596078, 1)
 anti_aliasing/quality/msaa_2d=2
 anti_aliasing/quality/msaa_3d=2
 anti_aliasing/quality/screen_space_aa=1

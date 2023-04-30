@@ -36,6 +36,21 @@ _subresources={
 }
 },
 "nodes": {
+"PATH:Bank": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
+},
+"PATH:Bar": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1,
+"primitive/size": Vector3(1, 2, 2)
+},
+"PATH:Building_worksite": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
 "PATH:City": {
 "generate/physics": true,
 "physics/shape_type": 2
