@@ -6,17 +6,16 @@ var _current_mission_start_dialog_index = 0
 var _current_mission_end_dialog_index = 0
 var _mission_done = false
 
+var start_mission_timer = Timer.new()
+
 
 func _ready():
-	var start_mission_timer = Timer.new()
-	start_mission_timer.wait_time = 2
+	add_child(start_mission_timer)
 	start_mission_timer.one_shot = true
-	start_mission_timer.autostart = true
 	start_mission_timer.connect("timeout", func(): 
 		self.start_next_mission()
-		start_mission_timer.queue_free()
-	, CONNECT_ONE_SHOT)
-	add_child(start_mission_timer)
+	)
+	delay_then_start_mission(2.0)
 
 
 func start_next_mission():
@@ -30,9 +29,12 @@ func start_next_mission():
 	$MissionOverlay.display_mission_text(mission_list[_current_mission_index].mission_text[_current_mission_start_dialog_index])
 
 
+func delay_then_start_mission(delay: float):
+	start_mission_timer.start(delay)
+
 func show_end_mission():
 	_mission_done = true
-	$MissionOverlay.display_mission_text(mission_list[_current_mission_index].end_text[_current_mission_start_dialog_index])
+	$MissionOverlay.display_mission_text(mission_list[_current_mission_index].end_text[_current_mission_end_dialog_index])
 	
 	
 func _input(event):
@@ -50,10 +52,11 @@ func _input(event):
 		else:
 			if _current_mission_end_dialog_index < mission.end_text.size() - 1:
 				_current_mission_end_dialog_index += 1
-				$MissionOverlay.display_mission_text(mission.mission_text[_current_mission_end_dialog_index])
+				$MissionOverlay.display_mission_text(mission.end_text[_current_mission_end_dialog_index])
 				get_tree().root.get_viewport().set_input_as_handled()
 			elif $MissionOverlay.is_dialog_visible():
 				$MissionOverlay.hide_dialog()
+				delay_then_start_mission(2.0)
 
 
 func activate_objects_for_mission(mission: Mission):
@@ -65,9 +68,12 @@ func activate_objects_for_mission(mission: Mission):
 	# - enable target
 	var target = find_child(mission.destination_name, true, true) as Area3D
 	target.monitoring = true
-	target.connect("body_entered", func():
-		target.monitoring = false
-		self.show_end_mission()
-	, CONNECT_ONE_SHOT)
+	target.connect("body_entered", func body_entered_callable(body):
+		if body == grabbable:
+			_mission_done = true
+			target.monitoring = false
+			self.show_end_mission()
+			target.disconnect("body_entered", target.get_signal_connection_list("body_entered")[0].get("callable"))
+	)
 	get_tree().root.get_viewport().set_input_as_handled()
 

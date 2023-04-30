@@ -1,7 +1,15 @@
-[gd_resource type="Resource" script_class="Mission" load_steps=6 format=3 uid="uid://bvxdybhr1rqer"]
+[gd_resource type="Resource" script_class="Mission" load_steps=8 format=3 uid="uid://bvxdybhr1rqer"]
 
 [ext_resource type="Script" path="res://missions/dialog.gd" id="1_uywct"]
 [ext_resource type="Script" path="res://missions/mission.gd" id="2_pm02b"]
+
+[sub_resource type="Resource" id="Resource_nkudu"]
+script = ExtResource("1_uywct")
+text = "Well you did it, as you should normally do on a regular job day."
+
+[sub_resource type="Resource" id="Resource_bqja4"]
+script = ExtResource("1_uywct")
+text = "Now wait for the next thing I want you to bring here."
 
 [sub_resource type="Resource" id="Resource_v2q1w"]
 script = ExtResource("1_uywct")
@@ -18,7 +26,7 @@ text = "But you should already know that, that’s why I’m paying you after al
 [resource]
 script = ExtResource("2_pm02b")
 mission_text = Array[ExtResource("1_uywct")]([SubResource("Resource_v2q1w"), SubResource("Resource_cusa5"), SubResource("Resource_fblj2")])
-end_text = Array[ExtResource("1_uywct")]([])
+end_text = Array[ExtResource("1_uywct")]([SubResource("Resource_nkudu"), SubResource("Resource_bqja4")])
 object_name = "Bar"
 camera_target_name = ""
 destination_name = "Building_worksite_top"
