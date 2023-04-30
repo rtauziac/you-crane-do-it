@@ -54,6 +54,11 @@ _subresources={
 "PATH:City": {
 "generate/physics": true,
 "physics/shape_type": 2
+},
+"PATH:Fridge": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
 }
 }
 }

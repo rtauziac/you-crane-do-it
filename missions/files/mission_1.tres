@@ -20,7 +20,7 @@ camera_target = "Boss"
 
 [sub_resource type="Resource" id="Resource_cusa5"]
 script = ExtResource("1_uywct")
-text = "Use your crane to bring the hook near the bar and then grab it."
+text = "Use your crane to bring the hook near the bar and then grab it with the Space bar or the A button of your Xbox controller."
 camera_target = "Bar"
 
 [sub_resource type="Resource" id="Resource_fblj2"]

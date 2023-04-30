@@ -6,15 +6,17 @@ extends Node3D
 @export var rope_range_max = 1
 @export var rope_speed = 0.52
 @onready var hook: RigidBody3D = self.get_node(hook_node_path)
-@export var min_distance = 1.5
+@export var min_distance = 1.0
 
 var _line_length = 2
 var _attached_object: RigidBody3D = null
 var _current_closest: RigidBody3D = null
+#@onready var _raycast = RayCast3D.new()
 
 
 func _ready():
 	rope_range_max = global_position.y + 0.05
+#	add_child(_raycast)
 
 
 func _process(delta):
@@ -57,21 +59,21 @@ func _input_rope(delta: float):
 		if _grab_rigid == null:
 			push_warning("object is not a RigidBody3D")
 			break
+		# cast ray
+#		_raycast.target_position = _grab_rigid.global_position
+#		_raycast.force_raycast_update()
 		var _dist = hook.global_position.distance_to(_grab_rigid.global_position)
 		if _dist < min_distance and _dist < _closest_dist:
 			_closest_dist = _dist
 			_closest = _grab_rigid
 	if _current_closest != _closest:
 		if _current_closest != null:
-			var _prev_mat = (_current_closest.get_child(0) as MeshInstance3D).get_surface_override_material(0)
-			_prev_mat.next_pass.set("albedo_color", Color(Color.BLACK, 0.0))
-			(_current_closest.get_child(0) as MeshInstance3D).set_surface_override_material(0, _prev_mat)
+			var mesh = _current_closest.get_child(0) as MeshInstance3D
+			mesh.set_instance_shader_parameter("highlight", Color.BLACK)
 		if _closest != null:
-			var _mat = (_closest.get_child(0) as MeshInstance3D).get_surface_override_material(0)
-			_mat.next_pass.set("albedo_color", Color(Color.BLACK, 0.35))
-			(_closest.get_child(0) as MeshInstance3D).set_surface_override_material(0, _mat)
+			var mesh = _closest.get_child(0) as MeshInstance3D
+			mesh.set_instance_shader_parameter("highlight", Color.WHITE)
 	_current_closest = _closest
-		
 
 
 func _handle_attached_object(delta: float):

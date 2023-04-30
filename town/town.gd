@@ -4,7 +4,7 @@ signal change_camera_target_to_node3D(node: Node3D)
 
 
 @export var mission_list: Array[Mission]
-var _current_mission_index = -1
+@export var current_mission_index = -1
 var _current_mission_start_dialog_index = 0
 var _current_mission_end_dialog_index = 0
 var _mission_done = false
@@ -22,14 +22,15 @@ func _ready():
 
 
 func start_next_mission():
-	_current_mission_index += 1
-	if _current_mission_index < 0 or _current_mission_index > mission_list.size() - 1:
-		push_warning("no mission corresponding to index %d" % _current_mission_index)
+	current_mission_index += 1
+	if current_mission_index < 0 or current_mission_index > mission_list.size() - 1:
+		push_warning("no mission corresponding to index %d" % current_mission_index)
 		return
 	# display mission text
 	_current_mission_start_dialog_index = 0
+	_current_mission_end_dialog_index = 0
 	_mission_done = false
-	var dialog_line = mission_list[_current_mission_index].mission_text[_current_mission_start_dialog_index]
+	var dialog_line = mission_list[current_mission_index].mission_text[_current_mission_start_dialog_index]
 	$MissionOverlay.display_mission_text(dialog_line)
 	var target = null if dialog_line.camera_target == null else $City.find_child(dialog_line.camera_target)
 	emit_signal("change_camera_target_to_node3D", target)
@@ -38,16 +39,17 @@ func start_next_mission():
 func delay_then_start_mission(delay: float):
 	start_mission_timer.start(delay)
 
+
 func show_end_mission():
 	_mission_done = true
-	$MissionOverlay.display_mission_text(mission_list[_current_mission_index].end_text[_current_mission_end_dialog_index])
+	$MissionOverlay.display_mission_text(mission_list[current_mission_index].end_text[_current_mission_end_dialog_index])
 	
 	
 func _input(event):
 	if event.is_action_pressed("grab"):
-		if _current_mission_index > mission_list.size() - 1:
+		if current_mission_index > mission_list.size() - 1:
 			return
-		var mission = mission_list[_current_mission_index]
+		var mission = mission_list[current_mission_index]
 		if not _mission_done:
 			if _current_mission_start_dialog_index < mission.mission_text.size() - 1:
 				_current_mission_start_dialog_index += 1
@@ -80,8 +82,11 @@ func _input(event):
 func activate_objects_for_mission(mission: Mission):
 	# activate mission objects when text is done displayed
 	# - enable grabbable
-	var grabbable = find_child(mission.object_name, true, true)
+	var grabbable = find_child(mission.object_name, true, true) as RigidBody3D
 	grabbable.add_to_group("grab")
+	grabbable.physics_material_override = preload("res://city/object_phys_material.tres")
+	grabbable.linear_damp = 1
+	grabbable.angular_damp = 1
 	(grabbable.get_child(0) as MeshInstance3D).set_surface_override_material(0, preload("res://palette_material.tres").duplicate(true))
 	# - enable target
 	var target = find_child(mission.destination_name, true, true) as Area3D

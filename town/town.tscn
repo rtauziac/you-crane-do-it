@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq622784om5pi"]
+[gd_scene load_steps=11 format=3 uid="uid://bq622784om5pi"]
 
 [ext_resource type="Script" path="res://town/town.gd" id="1_rqm5u"]
 [ext_resource type="PackedScene" uid="uid://cbskhhu7g3xuy" path="res://crane/crane.tscn" id="2_mm6le"]
 [ext_resource type="Resource" uid="uid://bvxdybhr1rqer" path="res://missions/files/mission_1.tres" id="2_n6s68"]
 [ext_resource type="PackedScene" uid="uid://bxkjpjo28k0m1" path="res://city/city.tscn" id="3_c188g"]
+[ext_resource type="Resource" uid="uid://b7bvb0js8en2q" path="res://missions/files/mission_2.tres" id="3_uovss"]
 [ext_resource type="PackedScene" uid="uid://dxjyenry8pi2n" path="res://town/mission_overlay.tscn" id="4_hqmpk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_67s3r"]
@@ -46,7 +47,7 @@ adjustment_saturation = 1.32
 
 [node name="Town" type="Node3D"]
 script = ExtResource("1_rqm5u")
-mission_list = Array[Resource("res://missions/mission.gd")]([ExtResource("2_n6s68")])
+mission_list = Array[Resource("res://missions/mission.gd")]([ExtResource("2_n6s68"), ExtResource("3_uovss")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k688p")
