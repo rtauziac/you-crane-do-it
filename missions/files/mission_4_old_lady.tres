@@ -1,26 +1,31 @@
-[gd_resource type="Resource" script_class="Mission" load_steps=7 format=3 uid="uid://bs655d60wrfxg"]
+[gd_resource type="Resource" script_class="Mission" load_steps=8 format=3 uid="uid://bs655d60wrfxg"]
 
+[ext_resource type="Texture2D" uid="uid://nbh3w4k5g4rw" path="res://persons/icon_granma.jpg" id="1_e80f8"]
 [ext_resource type="Script" path="res://missions/mission.gd" id="1_pvqur"]
 [ext_resource type="Script" path="res://missions/dialog.gd" id="1_srpo2"]
 
 [sub_resource type="Resource" id="Resource_dxc3y"]
 script = ExtResource("1_srpo2")
 text = "Well that is [i]so nice[/i] of you. Thank you very much!"
+image = ExtResource("1_e80f8")
 camera_target = "OldLady"
 
 [sub_resource type="Resource" id="Resource_yil7e"]
 script = ExtResource("1_srpo2")
 text = "Hello young boy… could you please help me get accross that road?"
+image = ExtResource("1_e80f8")
 camera_target = "OldLady"
 
 [sub_resource type="Resource" id="Resource_17x66"]
 script = ExtResource("1_srpo2")
 text = "The place next to the bank is where I need to go."
+image = ExtResource("1_e80f8")
 camera_target = "Old_lady_cross_road"
 
 [sub_resource type="Resource" id="Resource_s1eoc"]
 script = ExtResource("1_srpo2")
 text = "Thank you my dear"
+image = ExtResource("1_e80f8")
 camera_target = "OldLady"
 
 [resource]

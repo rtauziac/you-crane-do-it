@@ -28,7 +28,7 @@ grow_vertical = 0
 
 [node name="ColorRect" type="ColorRect" parent="DialogPrompt"]
 layout_mode = 2
-color = Color(0.156863, 0.156863, 0.156863, 0.498039)
+color = Color(0, 0, 0, 0.278431)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="DialogPrompt"]
 custom_minimum_size = Vector2(0, 180)
@@ -79,7 +79,7 @@ theme_override_constants/margin_bottom = 0
 
 [node name="ColorRect" type="ColorRect" parent="MissionPrompt"]
 layout_mode = 2
-color = Color(0, 0, 0, 0.423529)
+color = Color(0, 0, 0, 0.278431)
 
 [node name="MarginContainer" type="MarginContainer" parent="MissionPrompt"]
 layout_mode = 2
@@ -99,3 +99,53 @@ theme_override_font_sizes/mono_font_size = 0
 bbcode_enabled = true
 text = "This is some [b]bbcode[/b] enabled rich text"
 fit_content = true
+
+[node name="ControlsContainer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -499.0
+offset_top = 34.0
+offset_right = -37.0
+offset_bottom = 479.0
+grow_horizontal = 0
+
+[node name="ColorRect" type="ColorRect" parent="ControlsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.278431)
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlsContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ControlsContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
+bbcode_enabled = true
+text = "[center][b]Controls:[/b][/center]
+
+- [b]Arrow keys[/b] or [b]Left joystick[/b] to move horizontally.
+
+- [b]Page Up/Down[/b] or [b]Left/Right trigger[/b] to move the hook up and down.
+
+- [b]Space bar[/b] or [b]A button[/b] to activate hook or advance in dialogue.
+
+- [b]1 key[/b] or [b]Select[/b] to toggle this message."

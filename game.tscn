@@ -1,0 +1,125 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccd0f3n0cuca8"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_kuxhs"]
+[ext_resource type="PackedScene" uid="uid://clvo6wyh4i0ur" path="res://town/town.tscn" id="1_rx28t"]
+[ext_resource type="Script" path="res://pause_camera.gd" id="3_ffjbd"]
+
+[sub_resource type="GDScript" id="GDScript_d13ec"]
+resource_name = "auto_rotate"
+script/source = "extends Node3D
+
+@export var rotate_amount = 0.2
+
+
+func _process(delta):
+	rotate_y(delta * rotate_amount)
+"
+
+[node name="Node" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_kuxhs")
+
+[node name="Town" parent="." instance=ExtResource("1_rx28t")]
+process_mode = 1
+
+[node name="PauseMenu" type="Control" parent="."]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="PauseMenu/CenterContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu/CenterContainer/MarginContainer2"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.278431)
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/CenterContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/CenterContainer/MarginContainer2/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/CenterContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="RestartButton" type="Button" parent="PauseMenu/CenterContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Restart"
+
+[node name="ExitButton" type="Button" parent="PauseMenu/CenterContainer/MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Exit"
+
+[node name="EndGameTitleLayout" type="VBoxContainer" parent="PauseMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -243.5
+offset_top = 74.0
+offset_right = 243.5
+offset_bottom = 200.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="PauseMenu/EndGameTitleLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "The game is over"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Label2" type="Label" parent="PauseMenu/EndGameTitleLayout"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Well done"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+offset_right = 40.0
+grow_vertical = 0
+text = "A game by @Crazyrems, made for LDJam53 (code, art, sound)"
+
+[node name="Node3D" type="Node3D" parent="."]
+process_mode = 2
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.393968, -0.0431304, 0.268242)
+script = SubResource("GDScript_d13ec")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 0.716911, 0.697165, 0, -0.697165, 0.716911, 0, 9.9855, 10.0999)
+fov = 45.3
+script = ExtResource("3_ffjbd")
+
+[connection signal="game_ended" from="Town" to="." method="_on_game_ended"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/MarginContainer2/MarginContainer/VBoxContainer/ResumeButton" to="." method="_toggle_pause_menu"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/MarginContainer2/MarginContainer/VBoxContainer/RestartButton" to="." method="_restart_game"]
+[connection signal="pressed" from="PauseMenu/CenterContainer/MarginContainer2/MarginContainer/VBoxContainer/ExitButton" to="." method="_quit"]

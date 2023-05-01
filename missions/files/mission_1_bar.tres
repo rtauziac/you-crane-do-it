@@ -1,31 +1,37 @@
-[gd_resource type="Resource" script_class="Mission" load_steps=8 format=3 uid="uid://bvxdybhr1rqer"]
+[gd_resource type="Resource" script_class="Mission" load_steps=9 format=3 uid="uid://bvxdybhr1rqer"]
 
+[ext_resource type="Texture2D" uid="uid://dx12a2g5hjf8l" path="res://persons/icon_boss.jpg" id="1_ot0y8"]
 [ext_resource type="Script" path="res://missions/dialog.gd" id="1_uywct"]
 [ext_resource type="Script" path="res://missions/mission.gd" id="2_pm02b"]
 
 [sub_resource type="Resource" id="Resource_nkudu"]
 script = ExtResource("1_uywct")
 text = "Well you did it, as you should normally do on a regular job day."
+image = ExtResource("1_ot0y8")
 camera_target = "Boss"
 
 [sub_resource type="Resource" id="Resource_bqja4"]
 script = ExtResource("1_uywct")
 text = "Now wait for the next thing I want you to bring here."
+image = ExtResource("1_ot0y8")
 camera_target = "Boss"
 
 [sub_resource type="Resource" id="Resource_v2q1w"]
 script = ExtResource("1_uywct")
 text = "Hey, you! I’m your boss and I want you to bring me this bar on the floor on top of the building."
+image = ExtResource("1_ot0y8")
 camera_target = "Boss"
 
 [sub_resource type="Resource" id="Resource_cusa5"]
 script = ExtResource("1_uywct")
 text = "Use your crane to bring the hook near the bar and then grab it with the Space bar or the A button of your Xbox controller."
+image = ExtResource("1_ot0y8")
 camera_target = "Bar"
 
 [sub_resource type="Resource" id="Resource_fblj2"]
 script = ExtResource("1_uywct")
 text = "But you should already know that, that’s why I’m paying you after all!"
+image = ExtResource("1_ot0y8")
 camera_target = "Boss"
 
 [resource]

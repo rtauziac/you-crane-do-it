@@ -2,6 +2,7 @@ extends Node3D
 
 signal change_camera_target_to_node3D(node: Node3D)
 signal mission_ended
+signal game_ended
 
 
 @export var mission_list: Array[Mission]
@@ -26,6 +27,8 @@ func start_next_mission():
 	current_mission_index += 1
 	if current_mission_index < 0 or current_mission_index > mission_list.size() - 1:
 		push_warning("no mission corresponding to index %d" % current_mission_index)
+		if current_mission_index == mission_list.size():
+			emit_signal("game_ended")
 		return
 	# display mission text
 	_current_mission_start_dialog_index = 0
@@ -48,11 +51,15 @@ func show_end_mission():
 	$MissionOverlay.display_mission_text(dialog_line)
 	var target = null if dialog_line.camera_target == null else $City.find_child(dialog_line.camera_target)
 	emit_signal("change_camera_target_to_node3D", target)
-	
-	
+
+
+func set_mission_ui_visibility(visible: bool):
+	$MissionOverlay.visible = visible
+
+
 func _input(event):
 	if event.is_action_pressed("grab"):
-		if current_mission_index > mission_list.size() - 1:
+		if current_mission_index > mission_list.size() - 1 or current_mission_index < 0:
 			return
 		var mission = mission_list[current_mission_index]
 		if not _mission_done:

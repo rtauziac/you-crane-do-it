@@ -1,26 +1,31 @@
-[gd_resource type="Resource" script_class="Mission" load_steps=7 format=3 uid="uid://buy387jkhqdkw"]
+[gd_resource type="Resource" script_class="Mission" load_steps=8 format=3 uid="uid://buy387jkhqdkw"]
 
 [ext_resource type="Script" path="res://missions/dialog.gd" id="1_fqkgq"]
 [ext_resource type="Script" path="res://missions/mission.gd" id="1_idwfd"]
+[ext_resource type="Texture2D" uid="uid://ds3utoejoa5yy" path="res://persons/icon_child.jpg" id="1_yey18"]
 
 [sub_resource type="Resource" id="Resource_wwswn"]
 script = ExtResource("1_fqkgq")
 text = "Thank you sir! I can get to school now."
+image = ExtResource("1_yey18")
 camera_target = "Child"
 
 [sub_resource type="Resource" id="Resource_30kw8"]
 script = ExtResource("1_fqkgq")
 text = "Hey, mister! I’ll be late at school because of the bus!"
+image = ExtResource("1_yey18")
 camera_target = "Child"
 
 [sub_resource type="Resource" id="Resource_hgomi"]
 script = ExtResource("1_fqkgq")
 text = "It is stuck because of the working site!"
+image = ExtResource("1_yey18")
 camera_target = "SchoolBus"
 
 [sub_resource type="Resource" id="Resource_2rch7"]
 script = ExtResource("1_fqkgq")
 text = "I need the bus to be here already!"
+image = ExtResource("1_yey18")
 camera_target = "Child"
 
 [resource]

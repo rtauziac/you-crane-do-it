@@ -12,6 +12,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="GeneralPurposeLabel" type="Label" parent="Control"]
+layout_mode = 0
 offset_right = 570.0
 offset_bottom = 330.0
-text = "Test"

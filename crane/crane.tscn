@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cbskhhu7g3xuy"]
+[gd_scene load_steps=20 format=3 uid="uid://cbskhhu7g3xuy"]
 
 [ext_resource type="PackedScene" uid="uid://b365la352jhy8" path="res://crane/crane.glb" id="1_c5yg1"]
 [ext_resource type="Script" path="res://crane/crane.gd" id="1_gw841"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://crane/hook_script.gd" id="4_gkx28"]
 [ext_resource type="ArrayMesh" uid="uid://cyv3c8s5vdqn3" path="res://crane/crane_foot.res" id="5_1v288"]
 [ext_resource type="Script" path="res://crane/rope.gd" id="5_k0j32"]
+[ext_resource type="AudioStream" uid="uid://da34o552x5ybj" path="res://crane/crane_rope.wav" id="7_vjykc"]
+[ext_resource type="AudioStream" uid="uid://bfsr8oi6mflm8" path="res://crane/crane_motor.wav" id="10_t1f88"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_gqi8d"]
 size = Vector3(0.2, 0.07, 0.2)
@@ -68,6 +70,7 @@ surface_material_override/0 = ExtResource("3_86qde")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.06006, -4.81802)
 script = ExtResource("4_gkx28")
 hook_node_path = NodePath("../../Hook")
+rope_speed = 0.62
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="crane/HookScript"]
 mesh = SubResource("BoxMesh_gqi8d")
@@ -79,6 +82,12 @@ hook_node_path = NodePath("../../../Hook/Root")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="crane/HookScript/Rope"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.5)
 mesh = SubResource("CylinderMesh_aowgr")
+
+[node name="SoundHook" type="AudioStreamPlayer3D" parent="crane/HookScript"]
+stream = ExtResource("7_vjykc")
+volume_db = -80.0
+unit_size = 1.5
+autoplay = true
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="crane"]
 transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0.798391, 0)
@@ -98,6 +107,14 @@ shape = SubResource("ConvexPolygonShape3D_hnylg")
 [node name="TrunkShape" type="CollisionShape3D" parent="crane/CharacterBody3D"]
 transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 1.54682, 0)
 shape = SubResource("BoxShape3D_b646j")
+
+[node name="SoundRope" type="AudioStreamPlayer3D" parent="crane"]
+transform = Transform3D(1, 0, -5.96046e-08, 0, 1, 0, 5.96046e-08, 0, 1, 0, 3.57931, 0)
+stream = ExtResource("7_vjykc")
+volume_db = -80.0
+unit_size = 0.72
+autoplay = true
+panning_strength = 0.6
 
 [node name="Hook" type="RigidBody3D" parent="."]
 process_priority = 1
@@ -144,5 +161,11 @@ shape = SubResource("BoxShape3D_vwrhn")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="Foot/StaticBody3D"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.175654, 0)
 shape = SubResource("BoxShape3D_vwrhn")
+
+[node name="SoundMotor" type="AudioStreamPlayer3D" parent="Foot"]
+stream = ExtResource("10_t1f88")
+volume_db = -80.0
+unit_size = 5.0
+autoplay = true
 
 [editable path="crane"]

@@ -1,41 +1,49 @@
-[gd_resource type="Resource" script_class="Mission" load_steps=10 format=3 uid="uid://d2wstmnw5oy5v"]
+[gd_resource type="Resource" script_class="Mission" load_steps=11 format=3 uid="uid://d2wstmnw5oy5v"]
 
+[ext_resource type="Texture2D" uid="uid://dptaaq8x7p703" path="res://persons/icon_house.jpg" id="1_nfpmb"]
 [ext_resource type="Script" path="res://missions/mission.gd" id="1_rpb60"]
 [ext_resource type="Script" path="res://missions/dialog.gd" id="1_u0oah"]
 
 [sub_resource type="Resource" id="Resource_oovih"]
 script = ExtResource("1_u0oah")
 text = "Okay, thanks!"
+image = ExtResource("1_nfpmb")
 camera_target = "HomeRob"
 
 [sub_resource type="Resource" id="Resource_dh61r"]
 script = ExtResource("1_u0oah")
 text = "…Where do I start then?"
+image = ExtResource("1_nfpmb")
 camera_target = "HomeRob"
 
 [sub_resource type="Resource" id="Resource_jd1w0"]
 script = ExtResource("1_u0oah")
 text = "Hey you!"
+image = ExtResource("1_nfpmb")
 camera_target = "HomeRob"
 
 [sub_resource type="Resource" id="Resource_dpk6x"]
 script = ExtResource("1_u0oah")
 text = "I will rob the bank! I need the money."
+image = ExtResource("1_nfpmb")
 camera_target = "HomeRob"
 
 [sub_resource type="Resource" id="Resource_cvctm"]
 script = ExtResource("1_u0oah")
 text = "But… I don’t have the tools for that and I’m a bit unexperienced."
+image = ExtResource("1_nfpmb")
 camera_target = "HomeRob"
 
 [sub_resource type="Resource" id="Resource_musv0"]
 script = ExtResource("1_u0oah")
 text = "But I have a masterplan!"
+image = ExtResource("1_nfpmb")
 camera_target = "HomeRob"
 
 [sub_resource type="Resource" id="Resource_gox6o"]
 script = ExtResource("1_u0oah")
 text = "You bring the bank to my garden, then I can use the tools I have at home to do the robbery."
+image = ExtResource("1_nfpmb")
 camera_target = "HomeRob"
 
 [resource]

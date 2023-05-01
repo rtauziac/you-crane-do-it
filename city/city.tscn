@@ -57,6 +57,7 @@ script = ExtResource("1_sbek4")
 [node name="city" parent="." instance=ExtResource("1_alkpq")]
 
 [node name="Bank" parent="city" index="2"]
+mass = 12.0
 freeze = true
 
 [node name="Bar" parent="city" index="3"]
@@ -70,6 +71,9 @@ freeze = true
 [node name="SchoolBus" parent="city" index="6"]
 mass = 3.0
 freeze = true
+
+[node name="TreesCollider" parent="city" index="11"]
+visible = false
 
 [node name="Taxi" parent="city" index="15"]
 mass = 2.0
@@ -226,11 +230,9 @@ shape = SubResource("BoxShape3D_1npj2")
 transform = Transform3D(-0.382861, 0, -0.923806, 0, 1, 0, 0.923806, 0, -0.382861, -0.755774, 0.0835395, -2.47101)
 
 [node name="Mesh" type="MeshInstance3D" parent="Child"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("4_ssc73")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Child"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_40gst")
 
 [node name="BusStopZone" type="Area3D" parent="."]
@@ -242,7 +244,7 @@ monitorable = false
 shape = SubResource("BoxShape3D_am8ep")
 
 [node name="Dog" type="StaticBody3D" parent="."]
-transform = Transform3D(-0.283731, 0, 0.958904, 0, 1, 0, -0.958904, 0, -0.283731, 3.85106, 0.0670117, -1.98247)
+transform = Transform3D(0.687557, 0, 0.726131, 0, 1, 0, -0.726131, 0, 0.687557, 3.85106, 0.0670117, -1.98247)
 
 [node name="DogMesh" type="MeshInstance3D" parent="Dog"]
 mesh = ExtResource("5_wc26b")

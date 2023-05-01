@@ -1,27 +1,32 @@
-[gd_resource type="Resource" script_class="Mission" load_steps=7 format=3 uid="uid://b7bvb0js8en2q"]
+[gd_resource type="Resource" script_class="Mission" load_steps=8 format=3 uid="uid://b7bvb0js8en2q"]
 
 [ext_resource type="Script" path="res://missions/dialog.gd" id="1_mxy1x"]
 [ext_resource type="Script" path="res://missions/mission.gd" id="1_w3ueb"]
+[ext_resource type="Texture2D" uid="uid://dx12a2g5hjf8l" path="res://persons/icon_boss.jpg" id="1_yhkav"]
 
 [sub_resource type="Resource" id="Resource_1ral0"]
 script = ExtResource("1_mxy1x")
 text = "Well done. You can have a drink once you get down.
 Wait for the next thing I need and don’t get too distracted."
+image = ExtResource("1_yhkav")
 camera_target = "Boss"
 
 [sub_resource type="Resource" id="Resource_boxrw"]
 script = ExtResource("1_mxy1x")
 text = "It’s getting really hot up there. Bring me some fresh drink."
+image = ExtResource("1_yhkav")
 camera_target = "Boss"
 
 [sub_resource type="Resource" id="Resource_evvrg"]
 script = ExtResource("1_mxy1x")
 text = "I am so lazy I can’t go down here. Get the fridge to the top so I can hydrate myself."
+image = ExtResource("1_yhkav")
 camera_target = "Fridge"
 
 [sub_resource type="Resource" id="Resource_gxmoy"]
 script = ExtResource("1_mxy1x")
 text = "Do you know you can zoom with the SHIFT key or the B button of your Xbox controller?"
+image = ExtResource("1_yhkav")
 camera_target = "Boss"
 
 [resource]

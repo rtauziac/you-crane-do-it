@@ -13,6 +13,8 @@ var _attached_object: RigidBody3D = null
 var _current_closest: RigidBody3D = null
 #@onready var _raycast = RayCast3D.new()
 
+var _prev_hook_rate = 0
+
 
 func _ready():
 	rope_range_max = global_position.y + 0.05
@@ -47,8 +49,12 @@ func _hook_smooth_position():
 
 
 func _input_rope(delta: float):
-	var rope_rate = Input.get_axis("action_less", "action_greater")
-	_line_length =  clamp(_line_length + rope_rate * rope_speed * delta, rope_range_min, rope_range_max)
+	var hook_rate = _prev_hook_rate + clamp(Input.get_axis("action_less", "action_greater") - _prev_hook_rate, -0.05, 0.05)
+	_line_length =  clamp(_line_length + hook_rate * rope_speed * delta, rope_range_min, rope_range_max)
+	var hook_sound_level = abs(hook_rate)
+	$SoundHook.pitch_scale = hook_sound_level + 0.721
+	$SoundHook.volume_db = -80 * (1 - min(1, hook_sound_level * 2))
+	_prev_hook_rate = hook_rate
 	
 	# highlight closest object
 	var grab_objects = get_tree().get_nodes_in_group("grab")

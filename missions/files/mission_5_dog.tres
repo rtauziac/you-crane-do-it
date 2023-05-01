@@ -1,26 +1,31 @@
-[gd_resource type="Resource" script_class="Mission" load_steps=7 format=3 uid="uid://deia0nsy4gmmt"]
+[gd_resource type="Resource" script_class="Mission" load_steps=8 format=3 uid="uid://deia0nsy4gmmt"]
 
 [ext_resource type="Script" path="res://missions/mission.gd" id="1_3wi45"]
 [ext_resource type="Script" path="res://missions/dialog.gd" id="1_klco5"]
+[ext_resource type="Texture2D" uid="uid://d3ba8adc8tl02" path="res://persons/icon_dog.jpg" id="1_rcqr1"]
 
 [sub_resource type="Resource" id="Resource_joiuo"]
 script = ExtResource("1_klco5")
 text = "WOOF WOOF! [i](I’m happy! You find my bone!)[/i]"
+image = ExtResource("1_rcqr1")
 camera_target = "Dog"
 
 [sub_resource type="Resource" id="Resource_2dtee"]
 script = ExtResource("1_klco5")
 text = "Woof! [i](Hi!)[/i]"
+image = ExtResource("1_rcqr1")
 camera_target = "Dog"
 
 [sub_resource type="Resource" id="Resource_w0c05"]
 script = ExtResource("1_klco5")
 text = "…Woof? [i](I want my bone, but where is it?)[/i]"
+image = ExtResource("1_rcqr1")
 camera_target = "Dog"
 
 [sub_resource type="Resource" id="Resource_3nf4f"]
 script = ExtResource("1_klco5")
 text = "Woof woof [i](I remember doing sports with my master just before losing it)[/i]"
+image = ExtResource("1_rcqr1")
 camera_target = "Dog"
 
 [resource]

@@ -1,39 +1,46 @@
-[gd_resource type="Resource" script_class="Mission" load_steps=9 format=3 uid="uid://p4b6so55cugj"]
+[gd_resource type="Resource" script_class="Mission" load_steps=10 format=3 uid="uid://p4b6so55cugj"]
 
 [ext_resource type="Script" path="res://missions/dialog.gd" id="1_0iqt3"]
 [ext_resource type="Script" path="res://missions/mission.gd" id="1_aqs4a"]
+[ext_resource type="Texture2D" uid="uid://cgi40fqafj4qr" path="res://persons/icon_taxi.jpg" id="1_sb3in"]
 
 [sub_resource type="Resource" id="Resource_x0v84"]
 script = ExtResource("1_0iqt3")
 text = "\"We arrived at your destination!\"
 …"
+image = ExtResource("1_sb3in")
 camera_target = "Taxi"
 
 [sub_resource type="Resource" id="Resource_ex2nm"]
 script = ExtResource("1_0iqt3")
 text = "Well I think he didn’t see anything. Thank you I guess?"
+image = ExtResource("1_sb3in")
 camera_target = "Taxi"
 
 [sub_resource type="Resource" id="Resource_nyghi"]
 script = ExtResource("1_0iqt3")
-text = "…Hello?"
+text = "…Hello? I’m the taxi behind there."
+image = ExtResource("1_sb3in")
 camera_target = "Taxi"
 
 [sub_resource type="Resource" id="Resource_s5uo6"]
 script = ExtResource("1_0iqt3")
 text = "Well it’s a bit embarassing but I have a customer on the back.
- I can’t tell him I can’t make the drive because I don’t have gas anymore."
+I can’t tell him I can’t make the drive because I don’t have gas anymore."
+image = ExtResource("1_sb3in")
 camera_target = "Taxi"
 
 [sub_resource type="Resource" id="Resource_3jq53"]
 script = ExtResource("1_0iqt3")
-text = "and he won't get off the car anyway"
+text = "And he won't get off the car anyway"
+image = ExtResource("1_sb3in")
 camera_target = "Taxi"
 
 [sub_resource type="Resource" id="Resource_gftgx"]
 script = ExtResource("1_0iqt3")
 text = "Could you deposit my car to the roundabout next to the train station?"
-camera_target = "Taxi"
+image = ExtResource("1_sb3in")
+camera_target = "TrainStationZone"
 
 [resource]
 script = ExtResource("1_aqs4a")

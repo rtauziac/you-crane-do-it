@@ -16,6 +16,7 @@ var focus = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	current = not get_tree().paused
 	target_pos = lerp(target_pos, target.global_position, min(1, delta * target_smoothness))
 	look_at(target_pos)
 	var player_controlled_fov = (min_fov if Input.is_action_pressed("camera_zoom") else max_fov)

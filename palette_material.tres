@@ -4,19 +4,18 @@
 [ext_resource type="Shader" uid="uid://b6o4jytmdl028" path="res://highlight_pass_shader.tres" id="2_573bg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aq26j"]
-load_path = "res://.godot/imported/Metal_006_normal.jpg-f8d9ac7663ce72c25b29482e38dfd0b7.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1mdh8"]
 render_priority = -1
 shader = ExtResource("2_573bg")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3fcpv"]
-load_path = "res://.godot/imported/Metal_scratched_009_normal.jpg-3982931658015314598957cadca0fe21.s3tc.ctex"
 
 [resource]
 next_pass = SubResource("ShaderMaterial_1mdh8")
 albedo_texture = ExtResource("1_ktgav")
-roughness = 0.64
+metallic_specular = 0.18
+roughness = 0.22
 normal_texture = SubResource("CompressedTexture2D_3fcpv")
 heightmap_texture = SubResource("CompressedTexture2D_aq26j")
 subsurf_scatter_strength = 0.16
