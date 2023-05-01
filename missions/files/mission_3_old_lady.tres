@@ -15,7 +15,7 @@ camera_target = "OldLady"
 
 [sub_resource type="Resource" id="Resource_17x66"]
 script = ExtResource("1_srpo2")
-text = "The place next to the bank will be is where I need to go."
+text = "The place next to the bank is where I need to go."
 camera_target = "Old_lady_cross_road"
 
 [sub_resource type="Resource" id="Resource_s1eoc"]

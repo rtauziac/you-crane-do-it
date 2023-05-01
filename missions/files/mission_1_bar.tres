@@ -6,12 +6,12 @@
 [sub_resource type="Resource" id="Resource_nkudu"]
 script = ExtResource("1_uywct")
 text = "Well you did it, as you should normally do on a regular job day."
-camera_target = ""
+camera_target = "Boss"
 
 [sub_resource type="Resource" id="Resource_bqja4"]
 script = ExtResource("1_uywct")
 text = "Now wait for the next thing I want you to bring here."
-camera_target = ""
+camera_target = "Boss"
 
 [sub_resource type="Resource" id="Resource_v2q1w"]
 script = ExtResource("1_uywct")

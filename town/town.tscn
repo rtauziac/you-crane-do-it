@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://clvo6wyh4i0ur"]
+[gd_scene load_steps=16 format=3 uid="uid://clvo6wyh4i0ur"]
 
 [ext_resource type="Script" path="res://town/town.gd" id="1_rqm5u"]
 [ext_resource type="PackedScene" uid="uid://cbskhhu7g3xuy" path="res://crane/crane.tscn" id="2_mm6le"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dxjyenry8pi2n" path="res://town/mission_overlay.tscn" id="4_hqmpk"]
 [ext_resource type="Resource" uid="uid://bs655d60wrfxg" path="res://missions/files/mission_3_old_lady.tres" id="4_kba13"]
 [ext_resource type="Resource" uid="uid://buy387jkhqdkw" path="res://missions/files/mission_4_child_school.tres" id="5_g3c2i"]
+[ext_resource type="Resource" uid="uid://p4b6so55cugj" path="res://missions/files/mission_6_taxi.tres" id="7_bw62c"]
+[ext_resource type="Resource" uid="uid://d2wstmnw5oy5v" path="res://missions/files/mission_7_bank.tres" id="8_lg1qd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_67s3r"]
 sky_top_color = Color(0.54902, 0.690196, 0.988235, 1)
@@ -51,7 +53,7 @@ adjustment_saturation = 1.32
 [node name="Town" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.393968, -0.0431304, 0.268242)
 script = ExtResource("1_rqm5u")
-mission_list = Array[Resource("res://missions/mission.gd")]([ExtResource("2_vlwea"), ExtResource("2_ooaoe"), ExtResource("3_kcp3v"), ExtResource("4_kba13"), ExtResource("5_g3c2i")])
+mission_list = Array[Resource("res://missions/mission.gd")]([ExtResource("8_lg1qd"), ExtResource("2_ooaoe"), ExtResource("3_kcp3v"), ExtResource("4_kba13"), ExtResource("5_g3c2i"), ExtResource("2_vlwea"), ExtResource("7_bw62c")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k688p")

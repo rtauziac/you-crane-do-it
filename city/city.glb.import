@@ -74,6 +74,11 @@ _subresources={
 "physics/body_type": 1,
 "physics/shape_type": 1
 },
+"PATH:Taxi": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
+},
 "PATH:WorkFence": {
 "generate/physics": true,
 "physics/shape_type": 1

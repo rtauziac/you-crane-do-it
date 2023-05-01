@@ -57,15 +57,21 @@ theme_override_constants/margin_bottom = 12
 [node name="DialogRichTextLabel" type="RichTextLabel" parent="DialogPrompt/HBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 22
 bbcode_enabled = true
 text = "This is some [i]placeholder text[/i]."
+scroll_active = false
 
 [node name="MissionPrompt" type="MarginContainer" parent="."]
 layout_mode = 0
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 626.0
-offset_bottom = 49.0
+offset_left = 23.0
+offset_top = 34.0
+offset_right = 637.0
+offset_bottom = 79.0
 theme_override_constants/margin_left = 0
 theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
@@ -85,6 +91,11 @@ theme_override_constants/margin_bottom = 7
 [node name="MissionRichTextLabel" type="RichTextLabel" parent="MissionPrompt/MarginContainer"]
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
+theme_override_font_sizes/normal_font_size = 22
+theme_override_font_sizes/bold_font_size = 22
+theme_override_font_sizes/italics_font_size = 22
+theme_override_font_sizes/bold_italics_font_size = 22
+theme_override_font_sizes/mono_font_size = 0
 bbcode_enabled = true
 text = "This is some [b]bbcode[/b] enabled rich text"
 fit_content = true

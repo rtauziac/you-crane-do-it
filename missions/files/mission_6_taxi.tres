@@ -1,0 +1,44 @@
+[gd_resource type="Resource" script_class="Mission" load_steps=9 format=3 uid="uid://p4b6so55cugj"]
+
+[ext_resource type="Script" path="res://missions/dialog.gd" id="1_0iqt3"]
+[ext_resource type="Script" path="res://missions/mission.gd" id="1_aqs4a"]
+
+[sub_resource type="Resource" id="Resource_x0v84"]
+script = ExtResource("1_0iqt3")
+text = "\"We arrived at your destination!\"
+…"
+camera_target = "Taxi"
+
+[sub_resource type="Resource" id="Resource_ex2nm"]
+script = ExtResource("1_0iqt3")
+text = "Well I think he didn’t see anything. Thank you I guess?"
+camera_target = "Taxi"
+
+[sub_resource type="Resource" id="Resource_nyghi"]
+script = ExtResource("1_0iqt3")
+text = "…Hello?"
+camera_target = "Taxi"
+
+[sub_resource type="Resource" id="Resource_s5uo6"]
+script = ExtResource("1_0iqt3")
+text = "Well it’s a bit embarassing but I have a customer on the back.
+ I can’t tell him I can’t make the drive because I don’t have gas anymore."
+camera_target = "Taxi"
+
+[sub_resource type="Resource" id="Resource_3jq53"]
+script = ExtResource("1_0iqt3")
+text = "and he won't get off the car anyway"
+camera_target = "Taxi"
+
+[sub_resource type="Resource" id="Resource_gftgx"]
+script = ExtResource("1_0iqt3")
+text = "Could you deposit my car to the roundabout next to the train station?"
+camera_target = "Taxi"
+
+[resource]
+script = ExtResource("1_aqs4a")
+mission_text = Array[ExtResource("1_0iqt3")]([SubResource("Resource_nyghi"), SubResource("Resource_s5uo6"), SubResource("Resource_3jq53"), SubResource("Resource_gftgx")])
+end_text = Array[ExtResource("1_0iqt3")]([SubResource("Resource_x0v84"), SubResource("Resource_ex2nm")])
+object_name = "Taxi"
+destination_name = "TrainStationZone"
+mission_task = "Bring the [b]taxi[/b] to the [b]roundabout[/b] next to the train station"
