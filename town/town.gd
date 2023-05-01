@@ -1,6 +1,7 @@
 extends Node3D
 
 signal change_camera_target_to_node3D(node: Node3D)
+signal mission_ended
 
 
 @export var mission_list: Array[Mission]
@@ -42,7 +43,11 @@ func delay_then_start_mission(delay: float):
 
 func show_end_mission():
 	_mission_done = true
-	$MissionOverlay.display_mission_text(mission_list[current_mission_index].end_text[_current_mission_end_dialog_index])
+	$MissionOverlay.hide_mission_task()
+	var dialog_line = mission_list[current_mission_index].end_text[_current_mission_end_dialog_index]
+	$MissionOverlay.display_mission_text(dialog_line)
+	var target = null if dialog_line.camera_target == null else $City.find_child(dialog_line.camera_target)
+	emit_signal("change_camera_target_to_node3D", target)
 	
 	
 func _input(event):
@@ -61,8 +66,10 @@ func _input(event):
 			elif $MissionOverlay.is_dialog_visible():
 				# hide dialog
 				$MissionOverlay.hide_dialog()
+				$MissionOverlay.set_mission_task(mission.mission_task)
 				emit_signal("change_camera_target_to_node3D", null)
 				activate_objects_for_mission(mission)
+				get_tree().root.get_viewport().set_input_as_handled()
 		else:
 			if _current_mission_end_dialog_index < mission.end_text.size() - 1:
 				_current_mission_end_dialog_index += 1
@@ -76,7 +83,9 @@ func _input(event):
 			elif $MissionOverlay.is_dialog_visible():
 				$MissionOverlay.hide_dialog()
 				emit_signal("change_camera_target_to_node3D", null)
+				emit_signal("mission_ended")
 				delay_then_start_mission(2.0)
+				get_tree().root.get_viewport().set_input_as_handled()
 
 
 func activate_objects_for_mission(mission: Mission):
@@ -87,6 +96,7 @@ func activate_objects_for_mission(mission: Mission):
 	grabbable.physics_material_override = preload("res://city/object_phys_material.tres")
 	grabbable.linear_damp = 1
 	grabbable.angular_damp = 1
+	grabbable.freeze = false
 	(grabbable.get_child(0) as MeshInstance3D).set_surface_override_material(0, preload("res://palette_material.tres").duplicate(true))
 	# - enable target
 	var target = find_child(mission.destination_name, true, true) as Area3D

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Mission" load_steps=7 format=3 uid="uid://bs655d60wrfxg"]
+
+[ext_resource type="Script" path="res://missions/mission.gd" id="1_pvqur"]
+[ext_resource type="Script" path="res://missions/dialog.gd" id="1_srpo2"]
+
+[sub_resource type="Resource" id="Resource_dxc3y"]
+script = ExtResource("1_srpo2")
+text = "Well that is [i]so nice[/i] of you. Thank you very much!"
+camera_target = "OldLady"
+
+[sub_resource type="Resource" id="Resource_yil7e"]
+script = ExtResource("1_srpo2")
+text = "Hello young boy… could you please help me get accross that road?"
+camera_target = "OldLady"
+
+[sub_resource type="Resource" id="Resource_17x66"]
+script = ExtResource("1_srpo2")
+text = "The place next to the bank will be is where I need to go."
+camera_target = "Old_lady_cross_road"
+
+[sub_resource type="Resource" id="Resource_s1eoc"]
+script = ExtResource("1_srpo2")
+text = "Thank you my dear"
+camera_target = "OldLady"
+
+[resource]
+script = ExtResource("1_pvqur")
+mission_text = Array[ExtResource("1_srpo2")]([SubResource("Resource_yil7e"), SubResource("Resource_17x66"), SubResource("Resource_s1eoc")])
+end_text = Array[ExtResource("1_srpo2")]([SubResource("Resource_dxc3y")])
+object_name = "OldLady"
+destination_name = "Old_lady_cross_road"
+mission_task = "Help the [b]old lady[/b] cross the road [b]next to the bank[/b]"

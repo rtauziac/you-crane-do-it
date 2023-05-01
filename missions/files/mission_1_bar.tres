@@ -34,3 +34,4 @@ mission_text = Array[ExtResource("1_uywct")]([SubResource("Resource_v2q1w"), Sub
 end_text = Array[ExtResource("1_uywct")]([SubResource("Resource_nkudu"), SubResource("Resource_bqja4")])
 object_name = "Bar"
 destination_name = "Building_worksite_top"
+mission_task = "Bring the [b]bar[/b] on top of the [b]working site building[/b]"

@@ -30,3 +30,4 @@ mission_text = Array[ExtResource("1_mxy1x")]([SubResource("Resource_boxrw"), Sub
 end_text = Array[ExtResource("1_mxy1x")]([SubResource("Resource_1ral0")])
 object_name = "Fridge"
 destination_name = "Building_worksite_top"
+mission_task = "Bring the [b]fridge[/b] on top of the [b]working site building[/b]"

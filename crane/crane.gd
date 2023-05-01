@@ -16,3 +16,7 @@ func _physics_process(delta):
 
 func _on_change_camera_target(node):
 	$crane/Arm/CameraAnchor/CabinCamera.set_target(node)
+
+
+func _on_mission_ended():
+	$crane/HookScript._release_object()

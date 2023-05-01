@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bq622784om5pi"]
+[gd_scene load_steps=14 format=3 uid="uid://clvo6wyh4i0ur"]
 
 [ext_resource type="Script" path="res://town/town.gd" id="1_rqm5u"]
 [ext_resource type="PackedScene" uid="uid://cbskhhu7g3xuy" path="res://crane/crane.tscn" id="2_mm6le"]
-[ext_resource type="Resource" uid="uid://bvxdybhr1rqer" path="res://missions/files/mission_1.tres" id="2_n6s68"]
+[ext_resource type="Resource" uid="uid://bvxdybhr1rqer" path="res://missions/files/mission_1_bar.tres" id="2_ooaoe"]
+[ext_resource type="Resource" uid="uid://deia0nsy4gmmt" path="res://missions/files/mission_5_dog.tres" id="2_vlwea"]
 [ext_resource type="PackedScene" uid="uid://bxkjpjo28k0m1" path="res://city/city.tscn" id="3_c188g"]
-[ext_resource type="Resource" uid="uid://b7bvb0js8en2q" path="res://missions/files/mission_2.tres" id="3_uovss"]
+[ext_resource type="Resource" uid="uid://b7bvb0js8en2q" path="res://missions/files/mission_2_fridge.tres" id="3_kcp3v"]
 [ext_resource type="PackedScene" uid="uid://dxjyenry8pi2n" path="res://town/mission_overlay.tscn" id="4_hqmpk"]
+[ext_resource type="Resource" uid="uid://bs655d60wrfxg" path="res://missions/files/mission_3_old_lady.tres" id="4_kba13"]
+[ext_resource type="Resource" uid="uid://buy387jkhqdkw" path="res://missions/files/mission_4_child_school.tres" id="5_g3c2i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_67s3r"]
 sky_top_color = Color(0.54902, 0.690196, 0.988235, 1)
@@ -46,8 +49,9 @@ adjustment_saturation = 1.32
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_cg3b8"]
 
 [node name="Town" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.393968, -0.0431304, 0.268242)
 script = ExtResource("1_rqm5u")
-mission_list = Array[Resource("res://missions/mission.gd")]([ExtResource("2_n6s68"), ExtResource("3_uovss")])
+mission_list = Array[Resource("res://missions/mission.gd")]([ExtResource("2_vlwea"), ExtResource("2_ooaoe"), ExtResource("3_kcp3v"), ExtResource("4_kba13"), ExtResource("5_g3c2i")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_k688p")
@@ -61,9 +65,10 @@ size = 1.925
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.246109, -0.864945, 0.437379, -0.449796, 0.501647, 0.738941, -0.858553, -0.0148712, -0.512508, 0, 0, 0)
 shadow_enabled = true
-directional_shadow_mode = 0
-directional_shadow_blend_splits = true
+shadow_bias = 0.07
+shadow_blur = 0.678
 directional_shadow_max_distance = 20.0
+directional_shadow_pancake_size = 3.0
 
 [node name="City" parent="." instance=ExtResource("3_c188g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.311326, 0.0598566, 0.312741)
@@ -77,3 +82,4 @@ shape = SubResource("WorldBoundaryShape3D_cg3b8")
 [node name="MissionOverlay" parent="." instance=ExtResource("4_hqmpk")]
 
 [connection signal="change_camera_target_to_node3D" from="." to="Crane" method="_on_change_camera_target"]
+[connection signal="mission_ended" from="." to="Crane" method="_on_mission_ended"]

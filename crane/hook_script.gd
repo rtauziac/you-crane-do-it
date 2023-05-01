@@ -79,25 +79,39 @@ func _input_rope(delta: float):
 func _handle_attached_object(delta: float):
 	if _attached_object != null:
 		var line_vector = _attached_object.global_position + _attached_object.linear_velocity * delta - hook.global_position
-		_attached_object.apply_impulse(-line_vector * _attached_object.mass * delta * 100 * line_vector.length(), _attached_object.get_node("_pin_point").global_position - _attached_object.global_position)
-		hook.apply_central_force(_attached_object.global_position - hook.global_position * _attached_object.mass)
+		_attached_object.apply_impulse(-line_vector * _attached_object.mass * delta * 70 * line_vector.length(), _attached_object.get_node("_pin_point").global_position - _attached_object.global_position)
+		hook.apply_central_force((_attached_object.global_position - hook.global_position) * _attached_object.mass)
 
 
 func _unhandled_input(event):
 	if event.is_action_pressed("grab"):
-		if _attached_object == null:
-			if _current_closest == null:
-				return
-			_attached_object = _current_closest
-			var _pin_point = Node3D.new()
-			_pin_point.name = "_pin_point"
-			_attached_object.add_child(_pin_point)
-			_pin_point.global_position = hook.global_position
-			hook.collision_layer = 0
-			hook.collision_mask = 0
-		else:
-			_attached_object.remove_child(_attached_object.get_node("_pin_point"))
-			_attached_object = null
-			hook.collision_layer = 1
-			hook.collision_mask = 1
+		_toggle_hook()
 		get_tree().root.get_viewport().set_input_as_handled()
+
+
+func _toggle_hook():
+	if _attached_object == null:
+		_hook_closest_object()
+	else:
+		_release_object()
+
+
+func _hook_closest_object():
+	if _current_closest == null:
+		return
+	_attached_object = _current_closest
+	var _pin_point = Node3D.new()
+	_pin_point.name = "_pin_point"
+	_attached_object.add_child(_pin_point)
+	_pin_point.global_position = hook.global_position
+	hook.collision_layer = 0
+	hook.collision_mask = 0
+
+
+func _release_object():
+	if _attached_object == null:
+		return
+	_attached_object.remove_child(_attached_object.get_node("_pin_point"))
+	_attached_object = null
+	hook.collision_layer = 1
+	hook.collision_mask = 1

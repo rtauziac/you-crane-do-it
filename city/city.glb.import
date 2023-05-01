@@ -47,7 +47,16 @@ _subresources={
 "physics/shape_type": 1,
 "primitive/size": Vector3(1, 2, 2)
 },
+"PATH:Bone": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
+},
 "PATH:Building_worksite": {
+"generate/physics": true,
+"physics/shape_type": 1
+},
+"PATH:BusStop": {
 "generate/physics": true,
 "physics/shape_type": 1
 },
@@ -58,6 +67,15 @@ _subresources={
 "PATH:Fridge": {
 "generate/physics": true,
 "physics/body_type": 1,
+"physics/shape_type": 1
+},
+"PATH:SchoolBus": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 1
+},
+"PATH:WorkFence": {
+"generate/physics": true,
 "physics/shape_type": 1
 }
 }

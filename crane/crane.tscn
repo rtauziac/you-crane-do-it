@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbskhhu7g3xuy"]
+[gd_scene load_steps=18 format=3 uid="uid://cbskhhu7g3xuy"]
 
 [ext_resource type="PackedScene" uid="uid://b365la352jhy8" path="res://crane/crane.glb" id="1_c5yg1"]
 [ext_resource type="Script" path="res://crane/crane.gd" id="1_gw841"]
+[ext_resource type="Material" uid="uid://u5l5577tyfjw" path="res://palette_material_crane.tres" id="3_86qde"]
 [ext_resource type="Script" path="res://crane/crane_camera.gd" id="3_ibhhg"]
 [ext_resource type="ArrayMesh" uid="uid://vu6plwfe5kwn" path="res://crane/crane_hook.res" id="3_ik71c"]
 [ext_resource type="Script" path="res://crane/hook_script.gd" id="4_gkx28"]
@@ -20,15 +21,36 @@ rings = 2
 cap_top = false
 cap_bottom = false
 
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nb85d"]
+points = PackedVector3Array(-0.158903, 3.25975, -5.6217, -0.143069, 3.29163, -5.55668, -0.00093326, 3.57755, -5.39448, -0.106112, 3.28868, -5.60117, 0.158903, 3.25975, -5.6217, -0.158903, 3.25975, 1.37012, -0.143069, 3.29163, -2.19149, 0, 3.57755, -4.97289, 0.105863, 3.28868, -5.60117, -0.00093326, 3.57755, -2.35438, 0.158903, 3.25975, 1.37012, 0, 3.57755, 1.11963)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j7e6a"]
+points = PackedVector3Array(-0.183632, -0.448098, 0.143885, 0.183632, -0.448098, 0.143885, -0.183632, 0.143913, 0.143885, -0.183632, -0.341123, -0.143913, 0.183632, -0.341123, -0.143913, 0.183632, 0.143913, 0.143885, -0.183632, 0.143913, -0.143913, 0.183632, 0.143913, -0.143913)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hnylg"]
+points = PackedVector3Array(0.100165, 0.576273, 0.269497, -0.100165, 0.576273, 0.269497, 0.100165, -0.68991, 0.269497, 0.100165, 0.576273, -0.269497, -0.100165, 0.576273, -0.269497, -0.100165, -0.68991, 0.269497, 0.100165, -0.68991, -0.269497, -0.100165, -0.68991, -0.269497)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b646j"]
+size = Vector3(0.32598, 4.44798, 0.330879)
+
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_q73x0"]
 margin = 0.05
 points = PackedVector3Array(0.0618857, -0.127541, 0.0208236, -0.0571524, -0.0578083, -0.0571524, -0.0571524, -0.0578083, 0.0577809, 0.0551, 0.0508172, -0.0543805, -0.0407112, -0.205527, -0.0201951, -0.0543757, 0.0510251, 0.0551, 0.0551, 0.0508172, 0.055009, 0.0577725, -0.0578083, -0.0571524, -0.0550267, 0.0524617, -0.0551, 0.0495578, -0.201413, 0.0208236, 0.0577725, -0.0578083, 0.0577809, -0.0407112, -0.205527, 0.0208236, 0.0454274, -0.190277, -0.0184, -0.0530392, -0.164464, 0.0167285, 0.0618857, -0.127541, -0.0201951, -0.0530392, -0.164464, -0.0160999, 0.0249368, -0.205527, 0.0208236, -0.0448244, -0.19321, -0.0201951, 0.0491806, -0.179039, -0.0184, -0.0448244, -0.19321, 0.0208236, -0.0489376, -0.180894, 0.0167285)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rsk83"]
+size = Vector3(0.794604, 0.203193, 0.798744)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vwrhn"]
+size = Vector3(0.229641, 0.336059, 1.8526)
 
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_gw841")
 
 [node name="crane" parent="." instance=ExtResource("1_c5yg1")]
 transform = Transform3D(-0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, -0.173648, 0, 0, 0)
+
+[node name="Arm" parent="crane" index="0"]
+surface_material_override/0 = ExtResource("3_86qde")
 
 [node name="CameraAnchor" type="Node3D" parent="crane/Arm" index="0"]
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0.0534374, 2.71003, -0.578784)
@@ -38,6 +60,9 @@ current = true
 fov = 85.0
 script = ExtResource("3_ibhhg")
 target_node_path = NodePath("../../../../Hook")
+
+[node name="Trunk" parent="crane" index="3"]
+surface_material_override/0 = ExtResource("3_86qde")
 
 [node name="HookScript" type="Node3D" parent="crane"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.06006, -4.81802)
@@ -54,6 +79,25 @@ hook_node_path = NodePath("../../../Hook/Root")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="crane/HookScript/Rope"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.5)
 mesh = SubResource("CylinderMesh_aowgr")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="crane"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0.798391, 0)
+
+[node name="ArmShape" type="CollisionShape3D" parent="crane/CharacterBody3D"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_nb85d")
+
+[node name="CabinShape" type="CollisionShape3D" parent="crane/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00135281, 3.09994, -0.294258)
+shape = SubResource("ConvexPolygonShape3D_j7e6a")
+
+[node name="WeightShape" type="CollisionShape3D" parent="crane/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.20375, 0.797456)
+shape = SubResource("ConvexPolygonShape3D_hnylg")
+
+[node name="TrunkShape" type="CollisionShape3D" parent="crane/CharacterBody3D"]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0, 1.54682, 0)
+shape = SubResource("BoxShape3D_b646j")
 
 [node name="Hook" type="RigidBody3D" parent="."]
 process_priority = 1
@@ -83,8 +127,22 @@ light_negative = true
 omni_range = 0.498
 omni_attenuation = 0.366022
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Foot" type="MeshInstance3D" parent="."]
 mesh = ExtResource("5_1v288")
 skeleton = NodePath("../crane")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Foot"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Foot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.061561, 0)
+shape = SubResource("BoxShape3D_rsk83")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Foot/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.175654, 0)
+shape = SubResource("BoxShape3D_vwrhn")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Foot/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.175654, 0)
+shape = SubResource("BoxShape3D_vwrhn")
 
 [editable path="crane"]

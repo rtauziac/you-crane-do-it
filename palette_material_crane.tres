@@ -1,21 +1,20 @@
-[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://8qxqo6fi6isa"]
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://u5l5577tyfjw"]
 
-[ext_resource type="Texture2D" uid="uid://cmuq73rfhub4c" path="res://graphics/palette.png" id="1_ktgav"]
-[ext_resource type="Shader" uid="uid://b6o4jytmdl028" path="res://highlight_pass_shader.tres" id="2_573bg"]
+[ext_resource type="Texture2D" uid="uid://cmuq73rfhub4c" path="res://graphics/palette.png" id="1_jwung"]
+[ext_resource type="Shader" uid="uid://b6o4jytmdl028" path="res://highlight_pass_shader.tres" id="2_srjp0"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aq26j"]
-load_path = "res://.godot/imported/Metal_006_normal.jpg-f8d9ac7663ce72c25b29482e38dfd0b7.ctex"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1mdh8"]
 render_priority = -1
-shader = ExtResource("2_573bg")
+shader = ExtResource("2_srjp0")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3fcpv"]
-load_path = "res://.godot/imported/Metal_scratched_009_normal.jpg-3982931658015314598957cadca0fe21.s3tc.ctex"
 
 [resource]
 next_pass = SubResource("ShaderMaterial_1mdh8")
-albedo_texture = ExtResource("1_ktgav")
+cull_mode = 2
+albedo_texture = ExtResource("1_jwung")
 roughness = 0.64
 normal_texture = SubResource("CompressedTexture2D_3fcpv")
 heightmap_texture = SubResource("CompressedTexture2D_aq26j")

@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Mission" load_steps=7 format=3 uid="uid://buy387jkhqdkw"]
+
+[ext_resource type="Script" path="res://missions/dialog.gd" id="1_fqkgq"]
+[ext_resource type="Script" path="res://missions/mission.gd" id="1_idwfd"]
+
+[sub_resource type="Resource" id="Resource_wwswn"]
+script = ExtResource("1_fqkgq")
+text = "Thank you sir! I can get to school now."
+camera_target = "Child"
+
+[sub_resource type="Resource" id="Resource_30kw8"]
+script = ExtResource("1_fqkgq")
+text = "Hey, mister! I’ll be late at school because of the bus!"
+camera_target = "Child"
+
+[sub_resource type="Resource" id="Resource_hgomi"]
+script = ExtResource("1_fqkgq")
+text = "It is stuck because of the working site!"
+camera_target = "SchoolBus"
+
+[sub_resource type="Resource" id="Resource_2rch7"]
+script = ExtResource("1_fqkgq")
+text = "I need the bus to be here already!"
+camera_target = "Child"
+
+[resource]
+script = ExtResource("1_idwfd")
+mission_text = Array[ExtResource("1_fqkgq")]([SubResource("Resource_30kw8"), SubResource("Resource_hgomi"), SubResource("Resource_2rch7")])
+end_text = Array[ExtResource("1_fqkgq")]([SubResource("Resource_wwswn")])
+object_name = "SchoolBus"
+destination_name = "BusStopZone"
+mission_task = "Help the [b]bus[/b] get to the [b]child[/b]"
