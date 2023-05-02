@@ -21,7 +21,7 @@ DebugAutoload="*res://debug/debug_autoload.gd"
 
 [display]
 
-window/size/mode=4
+window/size/mode=2
 
 [input]
 
