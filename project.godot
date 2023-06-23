@@ -13,6 +13,9 @@ config_version=5
 config/name="Ldjam 53"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
+boot_splash/bg_color=Color(0.513726, 0.329412, 0.415686, 1)
+boot_splash/image="res://ycdi_cover_wide.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [autoload]
